@@ -44,7 +44,7 @@ lv_obj_t * ui_labelBenchScreen = NULL;
 lv_obj_t * ui_labelBenchIgn = NULL;
 lv_obj_t * ui_labelBenchIhj = NULL;
 lv_obj_t * ui_Start = NULL;
-lv_obj_t * ui_Label8 = NULL;
+lv_obj_t * ui_StartStop = NULL;
 lv_obj_t * ui_fuelPump = NULL;
 lv_obj_t * ui_labelFuelPump = NULL;
 lv_obj_t * ui_fan2 = NULL;
@@ -644,17 +644,17 @@ void ui_benchScreen_screen_init(void)
     lv_obj_set_style_bg_opa(ui_Start, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_clip_corner(ui_Start, true, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label8 = lv_label_create(ui_Start);
-    lv_obj_set_width(ui_Label8, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label8, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label8, -2);
-    lv_obj_set_y(ui_Label8, 3);
-    lv_obj_set_align(ui_Label8, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label8, "Start/Stop\nEngine");
-    lv_obj_set_style_text_color(ui_Label8, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_Label8, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui_Label8, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_Label8, &ui_font_FontLabel, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_StartStop = lv_label_create(ui_Start);
+    lv_obj_set_width(ui_StartStop, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_StartStop, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_StartStop, -2);
+    lv_obj_set_y(ui_StartStop, 3);
+    lv_obj_set_align(ui_StartStop, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_StartStop, "Start/Stop\nEngine");
+    lv_obj_set_style_text_color(ui_StartStop, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_StartStop, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui_StartStop, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_StartStop, &ui_font_FontLabel, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_fuelPump = lv_button_create(ui_benchScreen);
     lv_obj_set_width(ui_fuelPump, 120);
@@ -797,7 +797,7 @@ void ui_benchScreen_screen_destroy(void)
     ui_labelBenchIgn = NULL;
     ui_labelBenchIhj = NULL;
     ui_Start = NULL;
-    ui_Label8 = NULL;
+    ui_StartStop = NULL;
     ui_fuelPump = NULL;
     ui_labelFuelPump = NULL;
     ui_fan2 = NULL;

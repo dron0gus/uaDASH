@@ -70,7 +70,7 @@ extern lv_obj_t * ui_labelBenchIgn;
 extern lv_obj_t * ui_labelBenchIhj;
 extern void ui_event_Start(lv_event_t * e);
 extern lv_obj_t * ui_Start;
-extern lv_obj_t * ui_Label8;
+extern lv_obj_t * ui_StartStop;
 extern void ui_event_fuelPump(lv_event_t * e);
 extern lv_obj_t * ui_fuelPump;
 extern lv_obj_t * ui_labelFuelPump;

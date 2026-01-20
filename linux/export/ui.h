@@ -16,8 +16,11 @@ extern "C" {
 #include "ui_events.h"
 
 ///////////////////// SCREENS ////////////////////
+
+#include "screens/ui_benchScreen.h"
 #include "screens/ui_mainScreen.h"
 #include "screens/ui_settingsScreen.h"
+//#include "screens/ui_engineConfigScreen.h"
 
 ///////////////////// VARIABLES ////////////////////
 
