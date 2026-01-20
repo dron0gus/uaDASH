@@ -66,7 +66,7 @@
  *====================*/
 
 /*Default display refresh, input device read and animation step period.*/
-#define LV_DEF_REFR_PERIOD  33      /*[ms]*/
+#define LV_DEF_REFR_PERIOD  20      /*[ms]*/
 
 /*Default Dot Per Inch. Used to initialize default sizes such as widgets sized, style paddings.
  *(Not so important, you can adjust it to modify default sizes and spaces)*/
@@ -208,7 +208,7 @@
  *-----------*/
 
 /*Enable the log module*/
-#define LV_USE_LOG 0
+#define LV_USE_LOG 1
 #if LV_USE_LOG
 
     /*How important log should be added:
@@ -222,7 +222,7 @@
 
     /*1: Print the log with 'printf';
     *0: User need to register a callback with `lv_log_register_print_cb()`*/
-    #define LV_LOG_PRINTF 0
+    #define LV_LOG_PRINTF 1
 
     /*1: Enable print timestamp;
      *0: Disable print timestamp*/
@@ -356,7 +356,7 @@
 #define LV_ATTRIBUTE_FLUSH_READY
 
 /*Required alignment size for buffers*/
-#define LV_ATTRIBUTE_MEM_ALIGN_SIZE 1
+#define LV_ATTRIBUTE_MEM_ALIGN_SIZE 8
 
 /*Will be added where memories needs to be aligned (with -Os data might not be aligned to boundary by default).
  * E.g. __attribute__((aligned(4)))*/
@@ -391,11 +391,11 @@
 #define LV_FONT_MONTSERRAT_10 0
 #define LV_FONT_MONTSERRAT_12 0
 #define LV_FONT_MONTSERRAT_14 1
-#define LV_FONT_MONTSERRAT_16 0
-#define LV_FONT_MONTSERRAT_18 0
+#define LV_FONT_MONTSERRAT_16 1
+#define LV_FONT_MONTSERRAT_18 1
 #define LV_FONT_MONTSERRAT_20 0
 #define LV_FONT_MONTSERRAT_22 0
-#define LV_FONT_MONTSERRAT_24 0
+#define LV_FONT_MONTSERRAT_24 1
 #define LV_FONT_MONTSERRAT_26 1
 #define LV_FONT_MONTSERRAT_28 0
 #define LV_FONT_MONTSERRAT_30 0
@@ -716,7 +716,7 @@
 #define LV_USE_RLOTTIE 0
 
 /*Enable Vector Graphic APIs*/
-#define LV_USE_VECTOR_GRAPHIC  0
+#define LV_USE_VECTOR_GRAPHIC  1
 
 /* Enable ThorVG (vector graphics library) from the src/libs folder */
 #define LV_USE_THORVG_INTERNAL 0
@@ -746,14 +746,14 @@
 #define LV_USE_SNAPSHOT 0
 
 /*1: Enable system monitor component*/
-#define LV_USE_SYSMON   0
+#define LV_USE_SYSMON   1
 #if LV_USE_SYSMON
     /*Get the idle percentage. E.g. uint32_t my_get_idle(void);*/
     #define LV_SYSMON_GET_IDLE lv_timer_get_idle
 
     /*1: Show CPU usage and FPS count
      * Requires `LV_USE_SYSMON = 1`*/
-    #define LV_USE_PERF_MONITOR 0
+    #define LV_USE_PERF_MONITOR 1
     #if LV_USE_PERF_MONITOR
         #define LV_USE_PERF_MONITOR_POS LV_ALIGN_BOTTOM_RIGHT
 
@@ -764,7 +764,7 @@
     /*1: Show the used memory and the memory fragmentation
      * Requires `LV_USE_STDLIB_MALLOC = LV_STDLIB_BUILTIN`
      * Requires `LV_USE_SYSMON = 1`*/
-    #define LV_USE_MEM_MONITOR 0
+    #define LV_USE_MEM_MONITOR 1
     #if LV_USE_MEM_MONITOR
         #define LV_USE_MEM_MONITOR_POS LV_ALIGN_BOTTOM_LEFT
     #endif
@@ -807,7 +807,7 @@
 #define LV_USE_FRAGMENT 0
 
 /*1: Support using images as font in label or span widgets */
-#define LV_USE_IMGFONT 0
+#define LV_USE_IMGFONT 1
 
 /*1: Enable an observer pattern implementation*/
 #define LV_USE_OBSERVER 1
@@ -943,19 +943,19 @@
  ====================*/
 
 /*Show some widget. It might be required to increase `LV_MEM_SIZE` */
-#define LV_USE_DEMO_WIDGETS 0
+#define LV_USE_DEMO_WIDGETS 1
 
 /*Demonstrate the usage of encoder and keyboard*/
 #define LV_USE_DEMO_KEYPAD_AND_ENCODER 0
 
 /*Benchmark your system*/
-#define LV_USE_DEMO_BENCHMARK 0
+#define LV_USE_DEMO_BENCHMARK 1
 
 /*Render test for each primitives. Requires at least 480x272 display*/
-#define LV_USE_DEMO_RENDER 0
+#define LV_USE_DEMO_RENDER 1
 
 /*Stress test for LVGL*/
-#define LV_USE_DEMO_STRESS 0
+#define LV_USE_DEMO_STRESS 1
 
 /*Music player demo*/
 #define LV_USE_DEMO_MUSIC 0
@@ -968,19 +968,19 @@
 #endif
 
 /*Flex layout demo*/
-#define LV_USE_DEMO_FLEX_LAYOUT     0
+#define LV_USE_DEMO_FLEX_LAYOUT     1
 
 /*Smart-phone like multi-language demo*/
-#define LV_USE_DEMO_MULTILANG       0
+#define LV_USE_DEMO_MULTILANG       1
 
 /*Widget transformation demo*/
-#define LV_USE_DEMO_TRANSFORM       0
+#define LV_USE_DEMO_TRANSFORM       1
 
 /*Demonstrate scroll settings*/
-#define LV_USE_DEMO_SCROLL          0
+#define LV_USE_DEMO_SCROLL          1
 
 /*Vector graphic demo*/
-#define LV_USE_DEMO_VECTOR_GRAPHIC  0
+#define LV_USE_DEMO_VECTOR_GRAPHIC  1
 /*--END OF LV_CONF_H--*/
 
 #endif /*LV_CONF_H*/
