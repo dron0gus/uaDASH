@@ -6,10 +6,10 @@ AS				?= as
 PROJ_DIR 		?= $(abspath .)
 LVGL_DIR	 	?= $(PROJ_DIR)/lvgl
 UI_DIR			?= $(PROJ_DIR)/export
-APP_DIR			?= $(PROJ_DIR)/firmware
+APP_DIR			?= $(PROJ_DIR)
 
-
-DDEFS			:= -DLV_USE_LINUX_DRM=1
+DDEFS			:= -DLINUX_BUILD=1
+DDEFS			+= -DLV_USE_LINUX_DRM=1
 
 WARNINGS		:= -Wall -Wshadow -Wundef -Wmissing-prototypes -Wno-discarded-qualifiers -Wall -Wextra -Wno-unused-function -Wno-error=strict-prototypes -Wpointer-arith \
 					-fno-strict-aliasing -Wno-error=cpp -Wuninitialized -Wmaybe-uninitialized -Wno-unused-parameter -Wno-missing-field-initializers -Wtype-limits -Wsizeof-pointer-memaccess \
@@ -54,7 +54,9 @@ APPSRC = \
 	$(UI_DIR)/components/ui_comp_hook.c \
 
 CPPSRCS = \
-	$(APP_DIR)/events.cpp
+	$(APP_DIR)/events.cpp \
+	$(APP_DIR)/updaters.cpp \
+	$(APP_DIR)/display_driver.cpp
 
 #	$(APP_DIR)/screens/ui_benchScreen.c \
 #	$(APP_DIR)/screens/ui_engineConfigScreen.c \
