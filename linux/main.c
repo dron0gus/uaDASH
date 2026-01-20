@@ -1,9 +1,13 @@
 #include "lvgl/lvgl.h"
 #include "lvgl/demos/lv_demos.h"
+#if LV_USE_DEMO_BENCHMARK
+#include "lvgl/demos/benchmark/lv_demo_benchmark.h"
+#endif
 #include <unistd.h>
 #include <pthread.h>
 #include <time.h>
 #include <stdlib.h>
+#include "export/ui.h"
 
 static const char *lv_linux_get_video_card_node(const char *videocard_default)
 {
@@ -38,7 +42,7 @@ static void lv_linux_disp_init(void)
 #error Unsupported configuration
 #endif
 
-int main(void)
+int main(int argc, char *argv[])
 {
     lv_init();
 
@@ -48,12 +52,32 @@ int main(void)
     /*Create a Demo*/
 //    lv_demo_widgets();
 //    lv_demo_widgets_start_slideshow();
+    if (argc <= 1) {
+        ui_init();
+    } else {
+        if (!lv_demos_create(&argv[1], argc - 1)) {
+            //lv_demos_usage();
+            goto exit;
+        }
+    }
 
     /*Handle LVGL tasks*/
     while(1) {
-        lv_timer_handler();
-        usleep(5000);
+        uint32_t delay = lv_timer_handler();
+        if (delay < 1) {
+            delay = 1;
+        }
+        do {
+            usleep(1 * 1000);
+#if LV_USE_LINUX_DRM
+            // huh?
+            lv_tick_inc(1);
+#endif
+        } while (--delay);
     }
+
+exit:
+    lv_deinit();
 
     return 0;
 }
