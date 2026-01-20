@@ -10,6 +10,7 @@ APP_DIR			?= $(PROJ_DIR)
 
 DDEFS			:= -DLINUX_BUILD=1
 DDEFS			+= -DLV_USE_LINUX_DRM=1
+DDEFS			+= -DLV_USE_DEMO_BENCHMARK=1
 
 WARNINGS		:= -Wall -Wshadow -Wundef -Wmissing-prototypes -Wno-discarded-qualifiers -Wall -Wextra -Wno-unused-function -Wno-error=strict-prototypes -Wpointer-arith \
 					-fno-strict-aliasing -Wno-error=cpp -Wuninitialized -Wmaybe-uninitialized -Wno-unused-parameter -Wno-missing-field-initializers -Wtype-limits -Wsizeof-pointer-memaccess \
@@ -25,8 +26,8 @@ CFLAGS  		+= -I$(UI_DIR)/
 CFLAGS  		+= -I$(APP_DIR)/
 CFLAGS			+= -I/usr/include/drm/
 CFLAGS          += $(DDEFS)
-LDFLAGS 		?= -lm
 
+LDFLAGS 		+= -lm
 LDFLAGS         += -ldrm
 
 BIN 			= dash
@@ -75,8 +76,8 @@ CPPOBJS 		= $(CPPSRCS:.cpp=$(OBJEXT))
 
 MAINOBJ 		= $(MAINSRC:.c=$(OBJEXT))
 
-SRCS 			= $(MAINSRC) $(ASRCS) $(CSRCS) $(CPPSRCS)
-OBJS 			= $(MAINOBJ) $(AOBJS) $(COBJS) $(CPPOBJS)
+SRCS 			= $(MAINSRC) $(CSRCS) $(CPPSRCS)
+OBJS 			= $(MAINOBJ) $(COBJS) $(CPPOBJS)
 TARGET 			= $(addprefix $(BUILD_OBJ_DIR)/, $(patsubst ./%, %, $(OBJS)))
 
 ## MAINOBJ -> OBJFILES
@@ -92,11 +93,6 @@ $(BUILD_OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@$(CXX)  $(CFLAGS) -c $< -o $@
 	@echo "CXX $<"
-
-$(BUILD_OBJ_DIR)/%.o: %.S
-	@mkdir -p $(dir $@)
-	@$(AS) -c $< -o $@
-	@echo "AS $<"
 
 default: $(TARGET)
 	@mkdir -p $(dir $(BUILD_BIN_DIR)/)
