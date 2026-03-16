@@ -83,7 +83,7 @@
  * - LV_OS_RTTHREAD
  * - LV_OS_WINDOWS
  * - LV_OS_CUSTOM */
-#define LV_USE_OS   LV_OS_NONE
+#define LV_USE_OS   LV_OS_PTHREAD
 
 #if LV_USE_OS == LV_OS_CUSTOM
     #define LV_OS_CUSTOM_INCLUDE <stdint.h>
@@ -94,10 +94,10 @@
  *========================*/
 
 /*Align the stride of all layers and images to this bytes*/
-#define LV_DRAW_BUF_STRIDE_ALIGN                1
+#define LV_DRAW_BUF_STRIDE_ALIGN                8
 
 /*Align the start address of draw_buf addresses to this bytes*/
-#define LV_DRAW_BUF_ALIGN                       4
+#define LV_DRAW_BUF_ALIGN                       8
 
 /* If a widget has `style_opa < 255` (not `bg_opa`, `text_opa` etc) or not NORMAL blend mode
  * it is buffered into a "simple" layer before rendering. The widget can be buffered in smaller chunks.
@@ -112,10 +112,10 @@
     /* Set the number of draw unit.
      * > 1 requires an operating system enabled in `LV_USE_OS`
      * > 1 means multiply threads will render the screen in parallel */
-    #define LV_DRAW_SW_DRAW_UNIT_CNT    1
+    #define LV_DRAW_SW_DRAW_UNIT_CNT    2
 
     /* Use Arm-2D to accelerate the sw render */
-    #define LV_USE_DRAW_ARM2D_SYNC      0
+    #define LV_USE_DRAW_ARM2D_SYNC      1
 
     /* Enable native helium assembly to be compiled */
     #define LV_USE_NATIVE_HELIUM_ASM    0
@@ -360,7 +360,7 @@
 
 /*Will be added where memories needs to be aligned (with -Os data might not be aligned to boundary by default).
  * E.g. __attribute__((aligned(4)))*/
-#define LV_ATTRIBUTE_MEM_ALIGN
+#define LV_ATTRIBUTE_MEM_ALIGN __attribute__((aligned(8)))
 
 /*Attribute to mark large constant arrays for example font's bitmaps*/
 #define LV_ATTRIBUTE_LARGE_CONST

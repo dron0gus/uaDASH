@@ -7,6 +7,7 @@
 #include <pthread.h>
 #include <time.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "export/ui.h"
 
 static const char *lv_linux_get_video_card_node(const char *videocard_default)
@@ -67,13 +68,7 @@ int main(int argc, char *argv[])
         if (delay < 1) {
             delay = 1;
         }
-        do {
-            usleep(1 * 1000);
-#if LV_USE_LINUX_DRM
-            // huh?
-            lv_tick_inc(1);
-#endif
-        } while (--delay);
+        usleep(delay * 1000);
     }
 
 exit:

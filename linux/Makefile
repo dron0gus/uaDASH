@@ -11,6 +11,8 @@ APP_DIR			?= $(PROJ_DIR)
 DDEFS			:= -DLINUX_BUILD=1
 DDEFS			+= -DLV_USE_LINUX_DRM=1
 DDEFS			+= -DLV_USE_DEMO_BENCHMARK=1
+# make udelay happy
+DDEFS			+= -D_GNU_SOURCE
 
 WARNINGS		:= -Wall -Wshadow -Wundef -Wmissing-prototypes -Wno-discarded-qualifiers -Wall -Wextra -Wno-unused-function -Wno-error=strict-prototypes -Wpointer-arith \
 					-fno-strict-aliasing -Wno-error=cpp -Wuninitialized -Wmaybe-uninitialized -Wno-unused-parameter -Wno-missing-field-initializers -Wtype-limits -Wsizeof-pointer-memaccess \
@@ -20,7 +22,7 @@ WARNINGS		:= -Wall -Wshadow -Wundef -Wmissing-prototypes -Wno-discarded-qualifie
 					-Wno-missing-field-initializers -Wtype-limits -Wsizeof-pointer-memaccess -Wno-format-nonliteral -Wpointer-arith -Wno-cast-qual -Wmissing-prototypes \
 					-Wunreachable-code -Wno-switch-default -Wreturn-type -Wmultichar -Wno-discarded-qualifiers -Wformat-security -Wno-ignored-qualifiers -Wno-sign-compare -std=c99
 
-CFLAGS 			?= -O3 -g0 $(WARNINGS)
+CFLAGS 			+= -O3 -g0 $(WARNINGS)
 CFLAGS			+= -I$(LVGL_DIR)/
 CFLAGS  		+= -I$(UI_DIR)/
 CFLAGS  		+= -I$(APP_DIR)/
