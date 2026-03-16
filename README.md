@@ -1,3 +1,31 @@
+# This is development repo.
+
+# I'm trying to port uaDASH to linux
+
+# Please use original repo
+
+1. Get toolchain. Extract toolchain.
+
+2. Setup enviment. For example:
+
+`. /path/to/toolchain/poky/5.1.3/environment-setup-cortexa7t2hf-neon-poky-linux-gnueabi`
+
+**Note dot at first place**
+
+3. Clone this repo
+
+`git clone ; git submodule update --init --recursive`
+
+4. `cd uaDACH/linux ; make`
+
+5. Copy `build/bin/dash` to target device and start.
+
+6. Be happy.
+
+
+
+# Original README.md
+
 # uaDASH
 
 ## TL,DR
